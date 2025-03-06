@@ -1,19 +1,19 @@
-import { useState, useRef } from "react";
-import { TiLocationArrow } from "react-icons/ti";
+import {useState, useRef} from "react";
+import {TiLocationArrow} from "react-icons/ti";
 import PropTypes from "prop-types";
 
-export const BentoTilt = ({ children, className = "" }) => {
-BentoTilt.propTypes = {
-    children: PropTypes.node,
-    className: PropTypes.string,
-};
+export const BentoTilt = ({children, className = ""}) => {
+    BentoTilt.propTypes = {
+        children: PropTypes.node,
+        className: PropTypes.string,
+    };
     const [transformStyle, setTransformStyle] = useState("");
     const itemRef = useRef(null);
 
     const handleMouseMove = (event) => {
         if (!itemRef.current) return;
 
-        const { left, top, width, height } =
+        const {left, top, width, height} =
             itemRef.current.getBoundingClientRect();
 
         const relativeX = (event.clientX - left) / width;
@@ -36,21 +36,21 @@ BentoTilt.propTypes = {
             className={className}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
-            style={{ transform: transformStyle }}
+            style={{transform: transformStyle}}
         >
             {children}
         </div>
     );
 };
 
-export const BentoCard = ({ src, title, description, isComingSoon }) => {
-BentoCard.propTypes = {
-    src: PropTypes.string.isRequired,
-    title: PropTypes.node.isRequired,
-    description: PropTypes.string,
-    isComingSoon: PropTypes.bool,
-};
-    const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+export const BentoCard = ({src, title, description, isComingSoon}) => {
+    BentoCard.propTypes = {
+        src: PropTypes.string.isRequired,
+        title: PropTypes.node.isRequired,
+        description: PropTypes.string,
+        isComingSoon: PropTypes.bool,
+    };
+    const [cursorPosition, setCursorPosition] = useState({x: 0, y: 0});
     const [hoverOpacity, setHoverOpacity] = useState(0);
     const hoverButtonRef = useRef(null);
 
@@ -100,7 +100,7 @@ BentoCard.propTypes = {
                                 background: `radial-gradient(100px circle at ${cursorPosition.x}px ${cursorPosition.y}px, #656fe288, #00000026)`,
                             }}
                         />
-                        <TiLocationArrow className="relative z-20" />
+                        <TiLocationArrow className="relative z-20"/>
                         <p className="relative z-20">coming soon</p>
                     </div>
                 )}
@@ -136,7 +136,7 @@ const Features = () => (
                 />
             </BentoTilt>
 
-            <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
+            <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7" id="features">
                 <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
                     <BentoCard
                         src="/videos/feature-2.mp4"
@@ -182,7 +182,7 @@ const Features = () => (
                             M<b>o</b>re co<b>m</b>ing s<b>o</b>on.
                         </h1>
 
-                        <TiLocationArrow className="m-5 scale-[5] self-end" />
+                        <TiLocationArrow className="m-5 scale-[5] self-end"/>
                     </div>
                 </BentoTilt>
 
